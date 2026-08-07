@@ -1,0 +1,3 @@
+*.pbip linguist-language=JSON
+*.pbir linguist-language=JSON
+*.pbism linguist-language=JSON

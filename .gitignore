@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+screenshots/_tmp_*.png
+.DS_Store
