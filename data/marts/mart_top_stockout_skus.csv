@@ -1,0 +1,51 @@
+sku_id,sku_name,category,stockout_events
+SKU0062,Tomato 500g v2,Fresh,147
+SKU0054,Chicken Nuggets v3,Frozen,143
+SKU0001,Amul Milk 1L,Dairy,135
+SKU0064,Onion 1kg,Fresh,135
+SKU0057,Paratha Pack v2,Frozen,135
+SKU0069,Coriander Bunch v3,Fresh,134
+SKU0051,Frozen Peas 500g v3,Frozen,134
+SKU0002,Curd 400g,Dairy,133
+SKU0063,Tomato 500g v3,Fresh,133
+SKU0048,McCain Fries v3,Frozen,131
+SKU0005,Paneer 200g v3,Dairy,129
+SKU0008,Butter 100g v3,Dairy,128
+SKU0052,Chicken Nuggets,Frozen,127
+SKU0059,Banana 1 dozen,Fresh,126
+SKU0068,Coriander Bunch v2,Fresh,126
+SKU0067,Coriander Bunch,Fresh,126
+SKU0056,Paratha Pack,Frozen,126
+SKU0066,Potato 1kg v2,Fresh,124
+SKU0050,Frozen Peas 500g v2,Frozen,123
+SKU0007,Butter 100g v2,Dairy,123
+SKU0003,Paneer 200g,Dairy,122
+SKU0061,Tomato 500g,Fresh,122
+SKU0006,Butter 100g,Dairy,119
+SKU0053,Chicken Nuggets v2,Frozen,117
+SKU0058,Paratha Pack v3,Frozen,117
+SKU0060,Banana 1 dozen v2,Fresh,116
+SKU0046,McCain Fries,Frozen,115
+SKU0055,Ice Cream Tub,Frozen,114
+SKU0049,Frozen Peas 500g,Frozen,112
+SKU0004,Paneer 200g v2,Dairy,111
+SKU0009,Cheese Slices,Dairy,111
+SKU0047,McCain Fries v2,Frozen,106
+SKU0065,Potato 1kg,Fresh,97
+SKU0044,Dettol Handwash v2,Personal Care,77
+SKU0040,Head & Shoulders,Personal Care,75
+SKU0030,Aashirvaad Atta 5kg v3,Staples,75
+SKU0025,Real Juice 1L v3,Beverages,73
+SKU0027,Bisleri 1L,Beverages,73
+SKU0045,Dettol Handwash v3,Personal Care,72
+SKU0018,Dark Fantasy v2,Snacks,70
+SKU0041,Head & Shoulders v2,Personal Care,70
+SKU0022,Sprite 750ml v2,Beverages,69
+SKU0010,Lays Classic,Snacks,68
+SKU0026,Red Bull,Beverages,68
+SKU0011,Kurkure Masala,Snacks,68
+SKU0012,Kurkure Masala v2,Snacks,67
+SKU0032,Tata Salt 1kg,Staples,67
+SKU0023,Real Juice 1L,Beverages,66
+SKU0070,Maggi 4-pack,Instant,66
+SKU0017,Dark Fantasy,Snacks,65

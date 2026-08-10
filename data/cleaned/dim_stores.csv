@@ -1,0 +1,18 @@
+store_id,store_name,metro,zone,city_tier,promise_minutes,store_capacity_orders_hr,opened_date
+DS001,DarkStore Andheri West,Mumbai,Andheri West,1,15,57,2024-06-01
+DS002,DarkStore Powai,Mumbai,Powai,1,20,50,2024-06-01
+DS003,DarkStore Bandra,Mumbai,Bandra,1,15,42,2024-06-01
+DS004,DarkStore Thane West,Mumbai,Thane West,1,20,38,2024-06-01
+DS005,DarkStore Saket,Delhi NCR,Saket,1,15,60,2024-06-01
+DS006,DarkStore Gurugram Sec 29,Delhi NCR,Gurugram Sec 29,1,10,62,2024-06-01
+DS007,DarkStore Noida Sec 18,Delhi NCR,Noida Sec 18,1,12,52,2024-06-01
+DS008,DarkStore Dwarka,Delhi NCR,Dwarka,1,20,47,2024-06-01
+DS009,DarkStore Indiranagar,Bengaluru,Indiranagar,1,15,49,2024-06-01
+DS010,DarkStore Koramangala,Bengaluru,Koramangala,1,12,63,2024-06-01
+DS011,DarkStore HSR Layout,Bengaluru,HSR Layout,1,10,38,2024-06-01
+DS012,DarkStore Hitech City,Hyderabad,Hitech City,2,10,54,2024-06-01
+DS013,DarkStore Banjara Hills,Hyderabad,Banjara Hills,2,15,44,2024-06-01
+DS014,DarkStore Baner,Pune,Baner,2,15,57,2024-06-01
+DS015,DarkStore Koregaon Park,Pune,Koregaon Park,2,12,37,2024-06-01
+DS016,DarkStore Adyar,Chennai,Adyar,2,20,68,2024-06-01
+DS017,DarkStore Velachery,Chennai,Velachery,2,15,61,2024-06-01

@@ -1,0 +1,81 @@
+sku_id,sku_name,category,mrp,unit_cost,perishable,shelf_life_days
+SKU0001,Amul Milk 1L,Dairy,59.0,33.04,True,30
+SKU0002,Curd 400g,Dairy,79.0,56.98,True,7
+SKU0003,Paneer 200g,Dairy,49.0,31.13,True,3
+SKU0004,Paneer 200g v2,Dairy,29.0,16.82,True,7
+SKU0005,Paneer 200g v3,Dairy,59.0,35.53,True,30
+SKU0006,Butter 100g,Dairy,49.0,36.33,True,30
+SKU0007,Butter 100g v2,Dairy,39.0,28.92,True,180
+SKU0008,Butter 100g v3,Dairy,129.0,82.45,True,365
+SKU0009,Cheese Slices,Dairy,79.0,45.99,True,180
+SKU0010,Lays Classic,Snacks,19.0,13.89,False,180
+SKU0011,Kurkure Masala,Snacks,99.0,72.23,False,30
+SKU0012,Kurkure Masala v2,Snacks,59.0,34.35,False,7
+SKU0013,Britannia Good Day,Snacks,79.0,52.01,False,3
+SKU0014,Haldiram Bhujia,Snacks,99.0,68.9,False,30
+SKU0015,Haldiram Bhujia v2,Snacks,59.0,40.04,False,180
+SKU0016,Haldiram Bhujia v3,Snacks,19.0,12.36,False,5
+SKU0017,Dark Fantasy,Snacks,49.0,36.57,False,5
+SKU0018,Dark Fantasy v2,Snacks,39.0,21.97,False,365
+SKU0019,Dark Fantasy v3,Snacks,39.0,27.39,False,5
+SKU0020,Coca Cola 750ml,Beverages,99.0,69.58,False,30
+SKU0021,Sprite 750ml,Beverages,129.0,75.9,False,7
+SKU0022,Sprite 750ml v2,Beverages,19.0,10.84,False,180
+SKU0023,Real Juice 1L,Beverages,59.0,34.64,False,365
+SKU0024,Real Juice 1L v2,Beverages,29.0,20.59,False,30
+SKU0025,Real Juice 1L v3,Beverages,49.0,31.24,False,5
+SKU0026,Red Bull,Beverages,79.0,50.02,False,365
+SKU0027,Bisleri 1L,Beverages,29.0,22.37,False,7
+SKU0028,Aashirvaad Atta 5kg,Staples,79.0,48.28,False,180
+SKU0029,Aashirvaad Atta 5kg v2,Staples,99.0,70.77,False,365
+SKU0030,Aashirvaad Atta 5kg v3,Staples,49.0,30.02,False,3
+SKU0031,Fortune Oil 1L,Staples,149.0,97.57,False,180
+SKU0032,Tata Salt 1kg,Staples,39.0,26.65,False,30
+SKU0033,Toor Dal 1kg,Staples,129.0,93.46,False,7
+SKU0034,Sugar 1kg,Staples,49.0,34.02,False,3
+SKU0035,Sugar 1kg v2,Staples,79.0,44.98,False,30
+SKU0036,Sugar 1kg v3,Staples,49.0,27.42,False,5
+SKU0037,Dove Soap,Personal Care,49.0,28.58,False,180
+SKU0038,Dove Soap v2,Personal Care,79.0,46.55,False,3
+SKU0039,Colgate 100g,Personal Care,79.0,49.75,False,365
+SKU0040,Head & Shoulders,Personal Care,19.0,14.64,False,30
+SKU0041,Head & Shoulders v2,Personal Care,59.0,43.07,False,3
+SKU0042,Nivea Cream,Personal Care,59.0,39.11,False,7
+SKU0043,Dettol Handwash,Personal Care,59.0,38.88,False,180
+SKU0044,Dettol Handwash v2,Personal Care,49.0,32.82,False,5
+SKU0045,Dettol Handwash v3,Personal Care,49.0,27.19,False,7
+SKU0046,McCain Fries,Frozen,149.0,86.76,True,5
+SKU0047,McCain Fries v2,Frozen,29.0,20.43,True,30
+SKU0048,McCain Fries v3,Frozen,39.0,27.37,True,180
+SKU0049,Frozen Peas 500g,Frozen,99.0,56.9,True,30
+SKU0050,Frozen Peas 500g v2,Frozen,39.0,21.79,True,365
+SKU0051,Frozen Peas 500g v3,Frozen,59.0,37.48,True,5
+SKU0052,Chicken Nuggets,Frozen,129.0,80.36,True,5
+SKU0053,Chicken Nuggets v2,Frozen,39.0,26.07,True,365
+SKU0054,Chicken Nuggets v3,Frozen,39.0,29.85,True,5
+SKU0055,Ice Cream Tub,Frozen,19.0,12.35,True,365
+SKU0056,Paratha Pack,Frozen,149.0,107.6,True,365
+SKU0057,Paratha Pack v2,Frozen,149.0,99.73,True,365
+SKU0058,Paratha Pack v3,Frozen,39.0,28.37,True,7
+SKU0059,Banana 1 dozen,Fresh,49.0,28.01,True,180
+SKU0060,Banana 1 dozen v2,Fresh,39.0,29.85,True,180
+SKU0061,Tomato 500g,Fresh,29.0,21.49,True,5
+SKU0062,Tomato 500g v2,Fresh,29.0,17.15,True,7
+SKU0063,Tomato 500g v3,Fresh,129.0,76.78,True,30
+SKU0064,Onion 1kg,Fresh,99.0,76.58,True,5
+SKU0065,Potato 1kg,Fresh,29.0,16.04,True,30
+SKU0066,Potato 1kg v2,Fresh,39.0,22.63,True,3
+SKU0067,Coriander Bunch,Fresh,29.0,19.33,True,365
+SKU0068,Coriander Bunch v2,Fresh,79.0,47.08,True,180
+SKU0069,Coriander Bunch v3,Fresh,129.0,92.18,True,3
+SKU0070,Maggi 4-pack,Instant,29.0,16.78,False,30
+SKU0071,Maggi 4-pack v2,Instant,49.0,30.34,False,365
+SKU0072,Maggi 4-pack v3,Instant,59.0,41.45,False,5
+SKU0073,Yippee Noodles,Instant,39.0,29.75,False,7
+SKU0074,Yippee Noodles v2,Instant,59.0,41.05,False,3
+SKU0075,Yippee Noodles v3,Instant,29.0,16.89,False,180
+SKU0076,MTR Ready Meal,Instant,199.0,136.73,False,5
+SKU0077,MTR Ready Meal v2,Instant,129.0,84.82,False,365
+SKU0078,Cup Noodles,Instant,19.0,10.93,False,180
+SKU0079,Cup Noodles v2,Instant,129.0,94.59,False,7
+SKU0080,Poha Mix,Instant,59.0,40.67,False,365
