@@ -1,0 +1,42 @@
+table _Measures
+	lineageTag: c90549d8-a4ba-4666-91d7-1681c9eccaee
+
+	measure Orders = DISTINCTCOUNT(FactOrders[order_id])
+		formatString: #,0
+		lineageTag: ffdd8b4e-ae70-46c6-8f3a-d065267d6134
+
+	measure Delivered Orders = CALCULATE(DISTINCTCOUNT(FactOrders[order_id]), FactOrders[is_delivered] = 1)
+		formatString: #,0
+		lineageTag: aaa2c3d4-8f3a-42df-ae43-7f802e56c8fa
+
+	measure GMV = SUM(FactOrders[gmv])
+		formatString: ₹#,0
+		lineageTag: 2920f872-9ca5-42d2-a8ec-de3f4e1ea920
+
+	measure AOV = DIVIDE([GMV], [Orders])
+		formatString: ₹#,0.00
+		lineageTag: 07070ca2-2f6e-4ec2-b165-4ab80c432723
+
+	measure SLA Hit Rate = DIVIDE(SUM(FactOrders[sla_hit]), CALCULATE(COUNTROWS(FactOrders), FactOrders[is_delivered] = 1))
+		formatString: 0.0%
+		lineageTag: fa30313e-eeb4-49d5-89f0-eed7e5927157
+
+	measure Stockout Rate = DIVIDE(CALCULATE(DISTINCTCOUNT(FactOrders[order_id]), FactOrders[had_stockout] = 1), [Orders])
+		formatString: 0.0%
+		lineageTag: 7fc0796e-d189-478b-9ee6-587531313408
+
+	measure Cancellation Rate = DIVIDE(CALCULATE(DISTINCTCOUNT(FactOrders[order_id]), FactOrders[is_cancelled] = 1), [Orders])
+		formatString: 0.0%
+		lineageTag: b11a64d0-788c-46b7-a7b9-95e9193e2d40
+
+	measure Promo Burn = SUM(FactOrders[discount_amount])
+		formatString: ₹#,0
+		lineageTag: c2754cbf-0119-4ff0-b142-faee2147f003
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = #table({"Name"}, { {"_Measures"} })
+				in
+				    Source

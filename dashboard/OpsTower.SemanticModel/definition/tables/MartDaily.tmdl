@@ -1,0 +1,102 @@
+table MartDaily
+	lineageTag: 3e5f3850-dee2-4640-bab0-4d7d0d665cce
+
+	column order_date
+		dataType: string
+		lineageTag: 028098a5-68b6-448a-8c07-9dcc6c25c2a6
+		summarizeBy: none
+		sourceColumn: order_date
+
+	column orders
+		dataType: int64
+		lineageTag: d7d799ec-d9c8-4c3f-9c9f-37de13d16dea
+		summarizeBy: sum
+		sourceColumn: orders
+
+	column delivered_orders
+		dataType: int64
+		lineageTag: 91e50417-6885-425a-a610-5f78b7a4cb94
+		summarizeBy: sum
+		sourceColumn: delivered_orders
+
+	column cancelled_orders
+		dataType: int64
+		lineageTag: 00ce12f9-380c-4e68-90b7-c57ed30ebec8
+		summarizeBy: sum
+		sourceColumn: cancelled_orders
+
+	column gmv
+		dataType: double
+		lineageTag: ad57237f-80dd-4aa2-b7da-aacc3a3d65a5
+		summarizeBy: sum
+		sourceColumn: gmv
+
+	column net_gmv
+		dataType: double
+		lineageTag: a28bd6c0-905e-48ce-b563-570858126d3d
+		summarizeBy: sum
+		sourceColumn: net_gmv
+
+	column discount_amount
+		dataType: double
+		lineageTag: 7b04dee6-29a1-40ad-ba81-00648ce30f84
+		summarizeBy: sum
+		sourceColumn: discount_amount
+
+	column sla_hits
+		dataType: int64
+		lineageTag: 9512cee7-3588-4b48-ae76-c7bfa7af5836
+		summarizeBy: sum
+		sourceColumn: sla_hits
+
+	column stockout_orders
+		dataType: int64
+		lineageTag: 5609e318-1c13-4de9-a928-170d45b7e8be
+		summarizeBy: sum
+		sourceColumn: stockout_orders
+
+	column aov
+		dataType: double
+		lineageTag: 68cd72d5-2deb-429f-9815-86575161be50
+		summarizeBy: sum
+		sourceColumn: aov
+
+	column sla_hit_pct
+		dataType: double
+		lineageTag: a02f2267-a730-4c63-8ed2-575be51ae98c
+		summarizeBy: sum
+		sourceColumn: sla_hit_pct
+
+	column cancel_pct
+		dataType: double
+		lineageTag: 6a4fe436-7be7-413e-8264-14b5593326c8
+		summarizeBy: sum
+		sourceColumn: cancel_pct
+
+	column stockout_rate
+		dataType: double
+		lineageTag: e8acc9bf-f582-420c-9759-6498cf165ff5
+		summarizeBy: sum
+		sourceColumn: stockout_rate
+
+	column o2d_p50
+		dataType: double
+		lineageTag: d0c75252-304e-4849-806f-71d591fc30f2
+		summarizeBy: sum
+		sourceColumn: o2d_p50
+
+	column o2d_p90
+		dataType: double
+		lineageTag: b6f1f37e-f861-422a-9bd7-009adce24ba7
+		summarizeBy: sum
+		sourceColumn: o2d_p90
+
+	partition MartDaily = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\mart_daily.csv"), [Delimiter=",", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"order_date", type text}, {"orders", Int64.Type}, {"delivered_orders", Int64.Type}, {"cancelled_orders", Int64.Type}, {"gmv", type number}, {"net_gmv", type number}, {"discount_amount", type number}, {"sla_hits", Int64.Type}, {"stockout_orders", Int64.Type}, {"aov", type number}, {"sla_hit_pct", type number}, {"cancel_pct", type number}, {"stockout_rate", type number}, {"o2d_p50", type number}, {"o2d_p90", type number}})
+				in
+				    Typed

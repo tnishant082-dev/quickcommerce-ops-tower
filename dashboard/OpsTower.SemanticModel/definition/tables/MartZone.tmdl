@@ -1,0 +1,60 @@
+table MartZone
+	lineageTag: c763fdf8-1e6b-4731-9776-9d5df5c70d94
+
+	column metro
+		dataType: string
+		lineageTag: d129a00c-5449-4767-92ff-1c465781744b
+		summarizeBy: none
+		sourceColumn: metro
+
+	column zone
+		dataType: string
+		lineageTag: bb7db319-8ca6-473f-8881-5d593b8fc1cd
+		summarizeBy: none
+		sourceColumn: zone
+
+	column orders
+		dataType: int64
+		lineageTag: 2a23a4bd-bced-4d29-92f4-5ba68003cf18
+		summarizeBy: sum
+		sourceColumn: orders
+
+	column gmv
+		dataType: double
+		lineageTag: 9ca9f64f-7044-4e30-a608-b04fb03886b8
+		summarizeBy: sum
+		sourceColumn: gmv
+
+	column sla_hit_pct
+		dataType: double
+		lineageTag: 0f328145-9fd5-4073-93e9-c4e9ec17a40b
+		summarizeBy: sum
+		sourceColumn: sla_hit_pct
+
+	column cancel_pct
+		dataType: double
+		lineageTag: 48b0125a-15ee-444a-878e-d63fbb9f6171
+		summarizeBy: sum
+		sourceColumn: cancel_pct
+
+	column stockout_rate
+		dataType: double
+		lineageTag: 19156746-47e9-4019-aaec-8ea8f9fabd3e
+		summarizeBy: sum
+		sourceColumn: stockout_rate
+
+	column o2d_p50
+		dataType: double
+		lineageTag: 739eda9b-5d68-4c3e-9e93-00434b18fa07
+		summarizeBy: sum
+		sourceColumn: o2d_p50
+
+	partition MartZone = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\mart_zone.csv"), [Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"metro", type text}, {"zone", type text}, {"orders", Int64.Type}, {"gmv", type number}, {"sla_hit_pct", type number}, {"cancel_pct", type number}, {"stockout_rate", type number}, {"o2d_p50", type number}})
+				in
+				    Typed

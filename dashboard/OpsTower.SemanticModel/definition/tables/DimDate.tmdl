@@ -1,0 +1,42 @@
+table DimDate
+	lineageTag: cde18510-b642-4a74-86b9-fae17c5a6982
+
+	column order_date
+		dataType: string
+		lineageTag: c2050a47-d1e4-4606-a145-6b37cb8fb6ec
+		summarizeBy: none
+		sourceColumn: order_date
+
+	column date_key
+		dataType: int64
+		lineageTag: 9ddd0258-77d1-4282-9030-10114e6577c3
+		summarizeBy: none
+		sourceColumn: date_key
+
+	column dow
+		dataType: string
+		lineageTag: 102f4232-2447-40cf-ab7e-d89e92e39425
+		summarizeBy: none
+		sourceColumn: dow
+
+	column is_weekend
+		dataType: int64
+		lineageTag: bf017dbd-47ad-4ddf-831d-52ab3f93a2c7
+		summarizeBy: sum
+		sourceColumn: is_weekend
+
+	column week_num
+		dataType: int64
+		lineageTag: c4948591-5888-451e-aa87-7f8c05e661b6
+		summarizeBy: none
+		sourceColumn: week_num
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\dim_date.csv"), [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"order_date", type text}, {"date_key", Int64.Type}, {"dow", type text}, {"is_weekend", Int64.Type}, {"week_num", Int64.Type}})
+				in
+				    Typed

@@ -1,0 +1,42 @@
+table DimRider
+	lineageTag: 5e231448-3797-4ef3-86be-1af667d87c61
+
+	column rider_id
+		dataType: string
+		lineageTag: 8a390516-4966-42d2-a178-720dcd67e44f
+		summarizeBy: none
+		sourceColumn: rider_id
+
+	column store_id
+		dataType: string
+		lineageTag: 2693aaf7-f073-4719-8c8d-85c7d478ffa7
+		summarizeBy: none
+		sourceColumn: store_id
+
+	column shift
+		dataType: string
+		lineageTag: fe697ad4-1b0b-4ac2-a611-2dcb9227f3dd
+		summarizeBy: none
+		sourceColumn: shift
+
+	column vehicle
+		dataType: string
+		lineageTag: 7afafc1a-0e7a-4c79-a215-261f1d20f636
+		summarizeBy: none
+		sourceColumn: vehicle
+
+	column active
+		dataType: string
+		lineageTag: c4fcc034-c7f6-473c-be7b-4076227f3a04
+		summarizeBy: none
+		sourceColumn: active
+
+	partition DimRider = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\dim_rider.csv"), [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"rider_id", type text}, {"store_id", type text}, {"shift", type text}, {"vehicle", type text}, {"active", type text}})
+				in
+				    Typed

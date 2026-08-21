@@ -1,0 +1,32 @@
+{
+  "name": "ReportSection_rider_title",
+  "position": {
+    "x": 20,
+    "y": 20,
+    "z": 0,
+    "width": 900,
+    "height": 60,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Rider Network \u2014 open screenshots/ for finished page visuals; this PBIP wires data/marts CSVs."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {}
+  }
+}

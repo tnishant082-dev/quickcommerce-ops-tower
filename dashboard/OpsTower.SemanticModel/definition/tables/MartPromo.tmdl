@@ -1,0 +1,78 @@
+table MartPromo
+	lineageTag: e932e62f-7c47-48a3-8dbf-05e43ee56db7
+
+	column promo_type
+		dataType: string
+		lineageTag: a3f52ca4-d5c7-4593-9a70-310fb1932dd1
+		summarizeBy: none
+		sourceColumn: promo_type
+
+	column orders
+		dataType: int64
+		lineageTag: 414c55ea-d5ec-4e97-9d9a-cbde3d00cd8b
+		summarizeBy: sum
+		sourceColumn: orders
+
+	column delivered
+		dataType: int64
+		lineageTag: 03670d6b-c6eb-42d7-b7a7-d505abf48337
+		summarizeBy: sum
+		sourceColumn: delivered
+
+	column gmv
+		dataType: double
+		lineageTag: 389e3eee-016f-45f1-9754-c68c1d221b8f
+		summarizeBy: sum
+		sourceColumn: gmv
+
+	column discount_amount
+		dataType: double
+		lineageTag: 2f88c185-419c-4435-8b48-ab5071d90497
+		summarizeBy: sum
+		sourceColumn: discount_amount
+
+	column net_gmv
+		dataType: double
+		lineageTag: 06870b85-b79a-4ff6-a9a9-4df0f0be8619
+		summarizeBy: sum
+		sourceColumn: net_gmv
+
+	column cancel_pct
+		dataType: double
+		lineageTag: 30ff130f-5cca-4b6a-b615-fcf2586ae419
+		summarizeBy: sum
+		sourceColumn: cancel_pct
+
+	column promo_burn_pct
+		dataType: double
+		lineageTag: c3ab53d4-187c-43c2-9ff6-649e6bbd3128
+		summarizeBy: sum
+		sourceColumn: promo_burn_pct
+
+	column aov
+		dataType: double
+		lineageTag: b387c854-a5bd-4c89-89fd-ebc0e84f45c3
+		summarizeBy: sum
+		sourceColumn: aov
+
+	column aov_lift_vs_none
+		dataType: double
+		lineageTag: d2821369-bcfc-4c96-8c3a-730c16737bda
+		summarizeBy: sum
+		sourceColumn: aov_lift_vs_none
+
+	column promo_roi_proxy
+		dataType: double
+		lineageTag: 4d768b41-e7cd-4776-aba4-d2d30949f42f
+		summarizeBy: sum
+		sourceColumn: promo_roi_proxy
+
+	partition MartPromo = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\mart_promo.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"promo_type", type text}, {"orders", Int64.Type}, {"delivered", Int64.Type}, {"gmv", type number}, {"discount_amount", type number}, {"net_gmv", type number}, {"cancel_pct", type number}, {"promo_burn_pct", type number}, {"aov", type number}, {"aov_lift_vs_none", type number}, {"promo_roi_proxy", type number}})
+				in
+				    Typed

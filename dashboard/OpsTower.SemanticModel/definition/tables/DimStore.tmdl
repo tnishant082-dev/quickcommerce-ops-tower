@@ -1,0 +1,60 @@
+table DimStore
+	lineageTag: 0e67c4f2-eff1-4208-bb98-08f3d526404c
+
+	column store_id
+		dataType: string
+		lineageTag: d928c9c4-0b21-4bde-a479-cb665ac3533b
+		summarizeBy: none
+		sourceColumn: store_id
+
+	column store_name
+		dataType: string
+		lineageTag: eb8c531e-5578-4682-8b6a-557511b66d58
+		summarizeBy: none
+		sourceColumn: store_name
+
+	column metro
+		dataType: string
+		lineageTag: 94818bf2-bc86-4630-ab7e-c8ff79e1222f
+		summarizeBy: none
+		sourceColumn: metro
+
+	column zone
+		dataType: string
+		lineageTag: 7420b309-d5ac-448f-a4ca-38cba8b6f77c
+		summarizeBy: none
+		sourceColumn: zone
+
+	column city_tier
+		dataType: int64
+		lineageTag: 3c051966-f50f-46d4-aa1a-405e5c27c2ff
+		summarizeBy: none
+		sourceColumn: city_tier
+
+	column promise_minutes
+		dataType: int64
+		lineageTag: c83221b0-3615-490d-b947-14c1c533b947
+		summarizeBy: none
+		sourceColumn: promise_minutes
+
+	column store_capacity_orders_hr
+		dataType: int64
+		lineageTag: a7740335-01c3-451d-9e0f-37d2e80c790f
+		summarizeBy: none
+		sourceColumn: store_capacity_orders_hr
+
+	column opened_date
+		dataType: string
+		lineageTag: 8b966ba2-bf4f-464a-99ac-a4fce30467b5
+		summarizeBy: none
+		sourceColumn: opened_date
+
+	partition DimStore = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\dim_store.csv"), [Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"store_id", type text}, {"store_name", type text}, {"metro", type text}, {"zone", type text}, {"city_tier", Int64.Type}, {"promise_minutes", Int64.Type}, {"store_capacity_orders_hr", Int64.Type}, {"opened_date", type text}})
+				in
+				    Typed

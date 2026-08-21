@@ -1,0 +1,27 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+annotation PBI_QueryOrder = ["pDataFolder","DimDate","DimStore","DimRider","DimSku","FactOrders","FactOrderLines","FactStockouts","MartDaily","MartStore","MartZone","MartPromo","MartRider","MartTopStockoutSkus","_Measures"]
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DimDate
+ref table DimStore
+ref table DimRider
+ref table DimSku
+ref table FactOrders
+ref table FactOrderLines
+ref table FactStockouts
+ref table MartDaily
+ref table MartStore
+ref table MartZone
+ref table MartPromo
+ref table MartRider
+ref table MartTopStockoutSkus
+ref table _Measures
+ref expression pDataFolder

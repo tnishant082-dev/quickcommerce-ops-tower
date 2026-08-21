@@ -1,0 +1,66 @@
+table FactOrderLines
+	lineageTag: 6c4eb8e9-268d-48db-9e54-c3ae9f62c0ba
+
+	column order_id
+		dataType: string
+		lineageTag: a2adab01-d888-43c3-8632-2aa02d5cce6d
+		summarizeBy: none
+		sourceColumn: order_id
+
+	column sku_id
+		dataType: string
+		lineageTag: f620b1f6-8ba7-4755-a4dc-a1ce7d8791ac
+		summarizeBy: none
+		sourceColumn: sku_id
+
+	column qty_ordered
+		dataType: int64
+		lineageTag: bf794fa8-05b7-4d57-a150-4a1f1523c2f8
+		summarizeBy: sum
+		sourceColumn: qty_ordered
+
+	column qty_fulfilled
+		dataType: int64
+		lineageTag: 0130fca8-f447-46bd-98c3-cb846fc131cd
+		summarizeBy: sum
+		sourceColumn: qty_fulfilled
+
+	column unit_price
+		dataType: double
+		lineageTag: 34678593-49b1-44c6-bc1a-2709cbc3c9cb
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+	column line_gmv
+		dataType: double
+		lineageTag: 019daa00-6909-4f10-8bfe-f3ff9ef6c755
+		summarizeBy: sum
+		sourceColumn: line_gmv
+
+	column line_discount
+		dataType: double
+		lineageTag: 1210e1d6-8d9c-4182-8471-e6359fea3a0d
+		summarizeBy: sum
+		sourceColumn: line_discount
+
+	column line_cost
+		dataType: double
+		lineageTag: 6eb25d6a-c248-4d54-8704-3d790cdbabef
+		summarizeBy: sum
+		sourceColumn: line_cost
+
+	column stockout_flag
+		dataType: int64
+		lineageTag: 51324b3a-18f7-4262-a3be-faddda2e2d4f
+		summarizeBy: sum
+		sourceColumn: stockout_flag
+
+	partition FactOrderLines = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\fact_order_lines.csv"), [Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"order_id", type text}, {"sku_id", type text}, {"qty_ordered", Int64.Type}, {"qty_fulfilled", Int64.Type}, {"unit_price", type number}, {"line_gmv", type number}, {"line_discount", type number}, {"line_cost", type number}, {"stockout_flag", Int64.Type}})
+				in
+				    Typed

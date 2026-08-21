@@ -1,0 +1,66 @@
+table MartRider
+	lineageTag: 6bb857be-8db3-40b7-8b05-6c3448101547
+
+	column rider_id
+		dataType: string
+		lineageTag: 2cbb3cf6-3b7b-4638-8bba-52ecaf975a5b
+		summarizeBy: none
+		sourceColumn: rider_id
+
+	column deliveries
+		dataType: int64
+		lineageTag: 280d7d97-4522-4cf6-9775-ed26ec8260bd
+		summarizeBy: sum
+		sourceColumn: deliveries
+
+	column avg_o2d
+		dataType: double
+		lineageTag: 6cfab61a-8294-472f-918c-f53a9dd7ffa2
+		summarizeBy: sum
+		sourceColumn: avg_o2d
+
+	column sla_hit_pct
+		dataType: double
+		lineageTag: 9145186c-8093-4c9a-849f-393d713e13a0
+		summarizeBy: sum
+		sourceColumn: sla_hit_pct
+
+	column store_id
+		dataType: string
+		lineageTag: da97bd9d-7fdc-4f72-8c63-e143cb5d6884
+		summarizeBy: none
+		sourceColumn: store_id
+
+	column shift
+		dataType: string
+		lineageTag: d76fa602-5128-4c30-ac57-a5553697c2a8
+		summarizeBy: none
+		sourceColumn: shift
+
+	column vehicle
+		dataType: string
+		lineageTag: bdd62ef0-3df9-44a3-a265-e0a6b879784a
+		summarizeBy: none
+		sourceColumn: vehicle
+
+	column active
+		dataType: string
+		lineageTag: 1926c5a6-0f95-47c1-9f2f-1f99c310228f
+		summarizeBy: none
+		sourceColumn: active
+
+	column util_pct
+		dataType: double
+		lineageTag: db90615f-1da5-49f3-9aa3-7ea71cdbaac3
+		summarizeBy: sum
+		sourceColumn: util_pct
+
+	partition MartRider = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\mart_rider.csv"), [Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"rider_id", type text}, {"deliveries", Int64.Type}, {"avg_o2d", type number}, {"sla_hit_pct", type number}, {"store_id", type text}, {"shift", type text}, {"vehicle", type text}, {"active", type text}, {"util_pct", type number}})
+				in
+				    Typed

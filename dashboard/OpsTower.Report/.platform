@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "OpsTower"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e00d4b96-7e99-4de4-b473-af83bd2b7f98"
+  }
+}

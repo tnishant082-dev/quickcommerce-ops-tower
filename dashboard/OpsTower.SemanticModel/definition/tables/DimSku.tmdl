@@ -1,0 +1,54 @@
+table DimSku
+	lineageTag: 4ba94222-df0f-4a88-bd5a-69485ff8cf95
+
+	column sku_id
+		dataType: string
+		lineageTag: ea07f2b0-25a8-401b-98c3-d82f16ebe4a8
+		summarizeBy: none
+		sourceColumn: sku_id
+
+	column sku_name
+		dataType: string
+		lineageTag: 1435e804-c9ae-40e7-ab5d-61f38d52e000
+		summarizeBy: none
+		sourceColumn: sku_name
+
+	column category
+		dataType: string
+		lineageTag: bee5cfad-f2cd-4ce1-9626-1ec102d8a9fc
+		summarizeBy: none
+		sourceColumn: category
+
+	column mrp
+		dataType: double
+		lineageTag: d4a5dc86-9dad-46ee-b7f3-16ebf0fcf2ee
+		summarizeBy: none
+		sourceColumn: mrp
+
+	column unit_cost
+		dataType: double
+		lineageTag: d1537039-5da2-4539-923e-50fd6ebb50e9
+		summarizeBy: none
+		sourceColumn: unit_cost
+
+	column perishable
+		dataType: string
+		lineageTag: f3e6cadc-bd27-4739-81dc-8940bdf21a4c
+		summarizeBy: none
+		sourceColumn: perishable
+
+	column shelf_life_days
+		dataType: int64
+		lineageTag: 8646da60-1fb8-47f5-9b37-4c097ab33a99
+		summarizeBy: none
+		sourceColumn: shelf_life_days
+
+	partition DimSku = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\dim_sku.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"sku_id", type text}, {"sku_name", type text}, {"category", type text}, {"mrp", type number}, {"unit_cost", type number}, {"perishable", type text}, {"shelf_life_days", Int64.Type}})
+				in
+				    Typed

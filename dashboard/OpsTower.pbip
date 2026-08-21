@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "artifacts": [
+    {
+      "report": {
+        "path": "OpsTower.Report"
+      }
+    },
+    {
+      "dataset": {
+        "path": "OpsTower.SemanticModel"
+      }
+    }
+  ],
+  "settings": {
+    "enableAutoRecovery": true
+  }
+}

@@ -1,0 +1,36 @@
+table MartTopStockoutSkus
+	lineageTag: 36fce0a8-228c-4461-bb02-277af34a30c7
+
+	column sku_id
+		dataType: string
+		lineageTag: 015775b8-4e2b-471f-b481-bf3bdb42b1d1
+		summarizeBy: none
+		sourceColumn: sku_id
+
+	column sku_name
+		dataType: string
+		lineageTag: 12e9c658-e0af-4c59-af5c-f546ebae5385
+		summarizeBy: none
+		sourceColumn: sku_name
+
+	column category
+		dataType: string
+		lineageTag: 1b3e6476-e21f-48f9-a98d-31b306748af4
+		summarizeBy: none
+		sourceColumn: category
+
+	column stockout_events
+		dataType: int64
+		lineageTag: e0d071cc-3904-4bb5-80fb-6811457d9a3b
+		summarizeBy: sum
+		sourceColumn: stockout_events
+
+	partition MartTopStockoutSkus = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\mart_top_stockout_skus.csv"), [Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"sku_id", type text}, {"sku_name", type text}, {"category", type text}, {"stockout_events", Int64.Type}})
+				in
+				    Typed

@@ -1,0 +1,23 @@
+relationship FactOrders_DimDate
+	fromColumn: FactOrders.date_key
+	toColumn: DimDate.date_key
+
+relationship FactOrders_DimStore
+	fromColumn: FactOrders.store_id
+	toColumn: DimStore.store_id
+
+relationship FactOrders_DimRider
+	fromColumn: FactOrders.rider_id
+	toColumn: DimRider.rider_id
+
+relationship FactOrderLines_DimSku
+	fromColumn: FactOrderLines.sku_id
+	toColumn: DimSku.sku_id
+
+relationship FactStockouts_DimSku
+	fromColumn: FactStockouts.sku_id
+	toColumn: DimSku.sku_id
+
+relationship FactStockouts_DimStore
+	fromColumn: FactStockouts.store_id
+	toColumn: DimStore.store_id

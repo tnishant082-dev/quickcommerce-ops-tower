@@ -1,0 +1,4 @@
+expression pDataFolder = "..\\..\\data\\marts" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 3fd8964c-175d-4c70-bcd3-24cbee4ff306
+
+	annotation PBI_ResultType = Text
