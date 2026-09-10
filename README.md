@@ -134,7 +134,7 @@ Hot spots: weakest SLA zone **Noida Sec 18** (39.2%) · highest stockout SKU **T
 data/          cleaned tables (csv / xlsx / parquet)
 excel/         dictionary, cleaning log, summary
 sql/           KPI and quality queries
-python/        EDA / cleaning / feature scripts
+notebooks/     analysis notebooks (.ipynb)
 dashboard/     Power BI project (.pbip)
 screenshots/   dashboard page images
 artifacts/     walkthrough video
